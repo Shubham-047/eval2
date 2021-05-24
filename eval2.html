@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECommerce</title>
+    <style>
+        #container {
+            height: 90vh;
+            width: 80vw;
+            margin: 30px auto;
+            background-color: aqua;
+            border: 2px solid black;
+        }
+        #left {
+            height: 100%;
+            width: 24%;
+            float: left;
+            
+            border: 1px solid black;
+        }
+        #right {
+             height: 100%;
+            width: 75%;
+            float: left;
+            background-color: whitesmoke;
+            border: 1px solid black;
+        }
+        #form {
+            height:40vh ;
+            width: 80%;
+            margin: 30px auto;
+            background-color: white;
+        }
+        input {
+            height: 10%;
+            width: 92%;
+            margin:2% auto;
+        }
+        #add{
+            height: 15%;
+            width: 50%;
+            margin:30px auto;
+        }
+        #grid{
+            height: 80%;
+            width: 90%;
+            margin:10% auto;
+            background-color: white;
+            display: grid;
+            grid-gap: 10%;
+            grid-template-columns: auto auto auto;
+            grid-template-rows: auto auto;
+           
+        }
+       .prod1 {
+            
+           
+            height: 200px;
+            width: 200px;
+            background-color: red;
+        }
+      
+        .image {
+            height: 80%;
+            width: 100%;
+        }
+        img{
+             height: 100%;
+            width: 100%;
+        }
+        .remov{
+           
+            float: left;
+        }
+        .update{
+            
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="left">
+            <div id="form">
+            <input type="text" placeholder="Name" id="nam">
+            <input type="number" placeholder="Price" id="price">
+            <input type="text" placeholder="Description">
+            <input type="date" placeholder="Estimated Delivary">
+            <input type="text" placeholder="Image url">
+            <button id="add">ADD PRODUCT</button>
+            </div>
+            
+        </div>
+        <div id="right">
+            <div id="grid">
+           
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+    
+   var grid = document.getElementById('grid')
+
+   function addProd(){
+       var prod1 = document.createElement('div')
+       prod1.setAttribute('class', 'prod1')
+       prod1.display = grid
+      grid.appendChild(prod1)
+
+      var image = document.createElement('div')
+      image.setAttribute('class','image')
+      prod1.appendChild(image)
+
+      var imag = document.createElement('img')
+      imag.setAttribute('src', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG418u5Y9a6BtdLSuhqJXz6zHIYdnP1UcMA4Aai34qFLBInGykRAl-pwnX1JE&usqp=CAc')
+      image.append(imag)
+
+      var rebtn = document.createElement('button')
+      rebtn.setAttribute('class', 'remov')
+      rebtn.innerText = "Remove"
+      prod1.appendChild(rebtn)
+       rebtn.addEventListener('click',removeImg)
+        
+     
+
+       var upbtn = document.createElement('button')
+      upbtn.setAttribute('class', 'update')
+      upbtn.innerText = "Update"
+      prod1.appendChild(upbtn)
+      upbtn.addEventListener('click',price)
+
+   }
+   var addbtn = document.getElementById('add')
+   addbtn.addEventListener('click', addProd)
+  
+
+   let prod1 = document.createElement('div')
+    prod1.setAttribute('class', 'prod1')
+    prod1.style.backgroundColor = 'rgb(0,0,0,0)'
+    grid.appendChild(prod1)
+   function removeImg(){
+       var rem = document.querySelector('.prod1')
+       rem.remove();
+   }
+    
+   
+   function price(){
+       
+       var price = document.getElementById('price')
+       
+       var res = prompt('Enter new Price')
+       price.removeTex()
+       price.textContent = "res"
+   }
+
+</script>
